@@ -1,0 +1,42 @@
+/*Given an array arr[] of n integers, construct a Product Array prod[] (of same size) such that prod[i] is equal to the product of all the elements of arr[] except arr[i]. 
+Solve it without division operator and in O(n).
+Here, 1st ele = prod of all elements * 1/1st element, so that it get cancelled.
+thus 1st ele = prod of all ele * pow(1st ele, -1), which is its inverse.
+*/
+/*
+Input: arr[] = {10, 3, 5, 6, 2}
+Output: prod[] = {180, 600, 360, 300, 900}
+The elements of output array are 
+{3*5*6*2, 10*5*6*2, 10*3*6*2, 
+10*3*5*2, 10*3*5*6}
+*/
+/*
+Complexity Analysis: Time Complexity: O(n). 
+Only two traversals of the array is required.
+Space Complexity: O(1). 
+No extra space is required.
+*/
+
+import java.io.*;
+import java.util.*;
+
+class Solution {
+  public static void main(String[] args) {
+    int arr[] = {10,3,5,6,2};
+    int n = arr.length;
+    find(arr,n);
+    
+  }
+  static void find(int arr[],int n)
+  {
+   int prod = 1;
+   for(int i=0;i<n;i++)
+   {
+    prod*=arr[i];
+   }
+   for(int x=0; x<n; x++)
+   {
+     System.out.println((int)prod*Math.pow(arr[x],-1)+"");
+   }
+  } 
+}
